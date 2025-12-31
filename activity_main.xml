@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:title="Pengelola Keuangan"
+            app:titleTextColor="#1E1E1E"
+            app:titleCentered="false"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="88dp">
+
+                <!-- Summary Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="0dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saldo"
+                            android:textSize="13sp"
+                            android:textColor="#757575"
+                            android:letterSpacing="0.02"
+                            android:fontFamily="sans-serif-medium"/>
+
+                        <TextView
+                            android:id="@+id/tvBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Rp 0"
+                            android:textSize="28sp"
+                            android:textColor="#2E7D32"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="-0.01"/>
+
+                        <TextView
+                            android:id="@+id/tvPeriod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Bulan Ini"
+                            android:textSize="12sp"
+                            android:textColor="#9E9E9E"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:background="#F0F0F0"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pemasukan"
+                                    android:textSize="12sp"
+                                    android:textColor="#757575"/>
+
+                                <TextView
+                                    android:id="@+id/tvIncome"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Rp 0"
+                                    android:textSize="16sp"
+                                    android:textColor="#2E7D32"
+                                    android:fontFamily="sans-serif-medium"/>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginEnd="12dp"
+                                android:background="#F0F0F0"/>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pengeluaran"
+                                    android:textSize="12sp"
+                                    android:textColor="#757575"/>
+
+                                <TextView
+                                    android:id="@+id/tvExpense"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Rp 0"
+                                    android:textSize="16sp"
+                                    android:textColor="#C62828"
+                                    android:fontFamily="sans-serif-medium"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Period Selection dengan Horizontal ScrollView -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clipToPadding="false">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"
+                        app:chipSpacing="8dp">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/btnToday"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hari Ini"
+                            android:textColor="#1E1E1E"
+                            app:chipBackgroundColor="#E8F5E9"
+                            app:chipStrokeWidth="0dp"/>
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/btnWeek"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Minggu Ini"
+                            android:textColor="#1E1E1E"
+                            app:chipBackgroundColor="#E3F2FD"
+                            app:chipStrokeWidth="0dp"/>
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/btnMonth"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bulan Ini"
+                            android:textColor="#1E1E1E"
+                            app:chipBackgroundColor="#FFF3E0"
+                            app:chipStrokeWidth="0dp"/>
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/btnYear"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tahun Ini"
+                            android:textColor="#1E1E1E"
+                            app:chipBackgroundColor="#F3E5F5"
+                            app:chipStrokeWidth="0dp"/>
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/btnAll"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Semua"
+                            android:textColor="#1E1E1E"
+                            app:chipBackgroundColor="#ECEFF1"
+                            app:chipStrokeWidth="0dp"/>
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+
+                <!-- Action Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAnalysis"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:text="Analisis"
+                        android:textColor="#2E7D32"
+                        app:strokeColor="#2E7D32"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="12dp"
+                        app:icon="@android:drawable/ic_menu_manage"
+                        app:iconTint="#2E7D32"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnExport"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:text="Ekspor"
+                        android:textColor="#1976D2"
+                        app:strokeColor="#1976D2"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="12dp"
+                        app:icon="@android:drawable/ic_menu_upload"
+                        app:iconTint="#1976D2"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSync"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:text="Sync"
+                        android:textColor="#F57C00"
+                        app:strokeColor="#F57C00"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="12dp"
+                        app:icon="@android:drawable/ic_popup_sync"
+                        app:iconTint="#F57C00"/>
+                </LinearLayout>
+
+                <!-- Empty State -->
+                <LinearLayout
+                    android:id="@+id/emptyState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="32dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@android:drawable/ic_menu_report_image"
+                        android:alpha="0.3"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvEmpty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Belum ada transaksi"
+                        android:textSize="18sp"
+                        android:textColor="#424242"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Klik tombol + untuk menambahkan\ntransaksi pertama"
+                        android:textSize="14sp"
+                        android:textColor="#757575"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambah Transaksi"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="#2E7D32"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="12dp"
+                        android:onClick="onAddFirstTransaction"/>
+                </LinearLayout>
+
+                <!-- Recent Transactions Header -->
+                <TextView
+                    android:id="@+id/tvTransactionsHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Transaksi Terakhir"
+                    android:textSize="16sp"
+                    android:textColor="#1E1E1E"
+                    android:fontFamily="sans-serif-medium"
+                    android:visibility="gone"/>
+
+                <!-- Transactions List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:clipToPadding="false"
+                    tools:itemCount="5"
+                    tools:listitem="@android:layout/simple_list_item_1"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah transaksi"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:backgroundTint="#2E7D32"
+        app:tint="#FFFFFF"
+        app:elevation="6dp"
+        app:borderWidth="0dp"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

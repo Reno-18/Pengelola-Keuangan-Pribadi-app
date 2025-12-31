@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Keuanganku</string>
+
+    <!-- Common strings -->
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="delete">Hapus</string>
+    <string name="edit">Edit</string>
+    <string name="sync">Sinkronisasi</string>
+    <string name="export">Ekspor</string>
+    <string name="analysis">Analisis</string>
+    <string name="add">Tambah</string>
+
+    <!-- Transaction types -->
+    <string name="income">Pemasukan</string>
+    <string name="expense">Pengeluaran</string>
+
+    <!-- Categories -->
+    <string name="category_food">Makanan</string>
+    <string name="category_transport">Transportasi</string>
+    <string name="category_entertainment">Hiburan</string>
+    <string name="category_shopping">Belanja</string>
+    <string name="category_health">Kesehatan</string>
+    <string name="category_education">Pendidikan</string>
+    <string name="category_bills">Tagihan</string>
+    <string name="category_other">Lainnya</string>
+    <string name="category_salary">Gaji</string>
+    <string name="category_bonus">Bonus</string>
+    <string name="category_investment">Investasi</string>
+
+    <!-- Messages -->
+    <string name="msg_save_success">Transaksi berhasil disimpan</string>
+    <string name="msg_delete_success">Transaksi berhasil dihapus</string>
+    <string name="msg_sync_success">Sinkronisasi berhasil</string>
+    <string name="msg_sync_failed">Sinkronisasi gagal</string>
+    <string name="msg_export_success">Data berhasil diekspor</string>
+    <string name="msg_no_data">Tidak ada data</string>
+
+    <!-- Errors -->
+    <string name="error_title_required">Judul tidak boleh kosong</string>
+    <string name="error_amount_required">Jumlah tidak boleh kosong</string>
+    <string name="error_amount_invalid">Jumlah tidak valid</string>
+    <string name="error_category_required">Pilih kategori terlebih dahulu</string>
+
+    <!-- Settings -->
+    <string name="settings">Pengaturan</string>
+    <string name="auto_sync">Sinkronisasi Otomatis</string>
+    <string name="notifications">Notifikasi</string>
+    <string name="test_connection">Tes Koneksi</string>
+    <string name="reset">Reset</string>
+</resources>
